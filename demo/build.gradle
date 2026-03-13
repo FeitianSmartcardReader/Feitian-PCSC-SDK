@@ -1,0 +1,14 @@
+// Demo root build.gradle - uses pre-built AARs from libs/
+plugins {
+    id 'com.android.application' version '9.1.0' apply false
+    id 'com.android.library' version '9.1.0' apply false
+}
+subprojects {
+    configurations.all {
+        resolutionStrategy {
+            force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
+            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22'
+            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22'
+        }
+    }
+}

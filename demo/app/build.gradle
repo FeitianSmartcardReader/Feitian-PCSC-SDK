@@ -1,0 +1,59 @@
+// Demo app build.gradle - uses pre-built AARs from libs/, no SDK source
+// Version placeholders: 3.0.3, 4
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.ftsafe.pcsc.demo'
+    buildFeatures { buildConfig true }
+    compileSdk 34
+    ndkVersion "28.2.13676358"
+    defaultConfig {
+        applicationId "com.ftsafe.pcsc.demo"
+        minSdk 21
+        targetSdk 34
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        versionCode 4
+        versionName "3.0.3"
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path file('src/main/jni/CMakeLists.txt')
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+        debug {
+            debuggable true
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    // SDK: use pre-built AARs (no SDK source)
+    implementation fileTree(dir: project.rootProject.file('libs'), include: ['*.aar'])
+    // PKCS#11: thirdparty module (optional, requires OpenSSL for build)
+    implementation project(':thirdparty:opensc-pkcs11')
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.0'
+    androidTestImplementation 'androidx.test:runner:1.7.0'
+    androidTestImplementation 'androidx.test:rules:1.7.0'
+    androidTestImplementation 'androidx.test:core:1.7.0'
+}

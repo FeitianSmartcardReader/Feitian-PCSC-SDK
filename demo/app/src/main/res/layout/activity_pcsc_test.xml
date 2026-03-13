@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/surface_variant">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/surface"
+        android:elevation="4dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pcsc_test_desc"
+                android:textSize="14sp"
+                android:textColor="@color/on_surface_variant"
+                android:layout_marginBottom="16dp" />
+
+            <!-- listReaders -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/surface"
+                android:padding="16dp"
+                android:layout_marginBottom="12dp"
+                android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="nativeListReaders()" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:text="List available readers"
+                    android:textSize="12sp" android:textColor="@color/on_surface_variant" />
+                <Button android:id="@+id/btn_list_readers" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="@string/api_btn_execute" />
+                <TextView android:id="@+id/result_list_readers" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="40dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- nativeRunAllTests -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/surface"
+                android:padding="16dp"
+                android:layout_marginBottom="12dp"
+                android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="nativeRunAllTests()" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:text="Run all PC/SC API tests"
+                    android:textSize="12sp" android:textColor="@color/on_surface_variant" />
+                <Button android:id="@+id/btn_run_tests" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="@string/api_btn_execute" />
+                <TextView android:id="@+id/result_run_tests" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="80dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

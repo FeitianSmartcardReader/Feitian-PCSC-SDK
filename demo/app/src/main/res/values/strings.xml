@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PC/SC Demo</string>
+
+    <!-- Main -->
+    <string name="main_title">Feitian PC/SC</string>
+    <string name="main_subtitle_steps">Step 1: Start → Step 2: Scan → Step 3: Connect → Step 4: Test</string>
+    <string name="main_server">Server</string>
+    <string name="main_server_running">Running on port %d</string>
+    <string name="main_server_stopped">Stopped</string>
+    <string name="main_reader_status">Reader</string>
+    <string name="main_reader_unknown">— (tap Connect to check)</string>
+    <string name="main_reader_none">0 readers</string>
+    <string name="main_reader_count">%d reader(s)</string>
+    <string name="main_reader_na">— (start server first)</string>
+    <string name="main_btn_start">Start</string>
+    <string name="main_btn_stop">Stop</string>
+    <string name="main_step1_title">Step 1: Start Server</string>
+    <string name="main_step2_title">Step 2: Scan Devices</string>
+    <string name="main_step3_title">Step 3: Connect</string>
+    <string name="main_step3_connect">Connect</string>
+    <string name="main_step3_hint">Select device in Step 2 first, then tap Connect</string>
+    <string name="main_step4_title">Step 4: Functional Testing</string>
+    <string name="main_step4_hint">Run tests after connecting a reader and inserting a card</string>
+    <string name="main_btn_pcsc_test">PCSC Interface Test</string>
+    <string name="main_btn_private_api_test">Private API Test</string>
+    <string name="main_btn_pkcs11_test">OpenSC-PKCS11 Test</string>
+    <string name="main_btn_settings">Settings</string>
+    <string name="main_toast_start_server_first">Start server first</string>
+    <string name="main_toast_socket_initialized">Socket initialized</string>
+    <string name="main_toast_native_failed">Native lib load failed</string>
+    <string name="main_toast_server_started">Server started</string>
+    <string name="main_toast_server_stopped">Server stopped</string>
+    <string name="main_error_start_first">Start server first</string>
+    <string name="main_action_start_server">Start Server</string>
+    <string name="main_permission_denied_hint">Bluetooth and location require user to allow. USB reader requires user to allow when prompted.</string>
+    <string name="main_usb_permission_granted">USB reader access allowed</string>
+    <string name="main_retry">Retry</string>
+    <string name="main_ble_devices">BLE devices (FT_ prefix)</string>
+    <string name="main_ble_flow_hint">1. Scan BLE  2. Select device  3. Test</string>
+    <string name="main_ble_step1_scan">Step 1: Scan BLE</string>
+    <string name="main_ble_step2_select">Step 2: Select device</string>
+    <string name="main_ble_step3_test">Step 3: Test selected reader</string>
+    <string name="main_btn_scan_ble">Scan BLE</string>
+    <string name="main_ble_scanning">Scanning…</string>
+    <string name="main_ble_none">No FT_ devices found</string>
+    <string name="main_ble_found_count">%d found</string>
+    <string name="main_ble_tap_scan">Tap Scan to find</string>
+    <string name="main_ble_select_device">Select device</string>
+    <string name="main_ble_no_devices">No devices (tap Scan)</string>
+    <string name="main_btn_test_reader">Test Reader</string>
+
+    <!-- API Demo -->
+    <string name="api_demo_title">API Demo</string>
+    <string name="api_params_hint">Connection params (host/port for initSocket and dependent APIs)</string>
+    <string name="api_host">host</string>
+    <string name="api_port">port</string>
+    <string name="api_section_pcsc">PCSCServerService</string>
+    <string name="api_section_ftreader">FTReaderPCSC</string>
+    <string name="api_start_desc">Start PC/SC server</string>
+    <string name="api_stop_desc">Stop PC/SC server</string>
+    <string name="api_is_running_desc">Check if server is running</string>
+    <string name="api_get_port_desc">Get default server port</string>
+    <string name="api_init_socket_desc">Connect native lib to PC/SC server. Uses host/port from above.</string>
+    <string name="api_uninit_desc">Disconnect from PC/SC server</string>
+    <string name="api_list_readers_desc">List readers. Uses host/port above for init.</string>
+    <string name="api_device_info_desc">Get device info (firmware, serial, manufacturer, model, readerName). Uses host/port above.</string>
+    <string name="api_device_info_title">nativeGetDeviceInfo()</string>
+    <string name="api_run_tests_desc">Run all PC/SC API tests. Uses host/port above.</string>
+    <string name="api_result_server_started">Server started on port %d</string>
+    <string name="api_result_server_stopped">Server stopped</string>
+    <string name="api_btn_execute">Execute</string>
+    <string name="api_running">Running…</string>
+    <string name="api_error_start_first">Error: Start server first</string>
+    <string name="api_action_start_server">Start Server</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_hint">Socket connection used by initSocket(host, port). Default values work for most users.</string>
+    <string name="settings_host">Host</string>
+    <string name="settings_port">Port</string>
+    <string name="settings_ble_ccid_debug">BLE CCID debug log</string>
+    <string name="settings_ble_ccid_debug_summary">Log BLE send/recv hex dumps (for debugging reader issues)</string>
+    <string name="settings_btn_save">Save</string>
+    <string name="settings_toast_saved">Saved</string>
+
+    <!-- PCSC Test -->
+    <string name="pcsc_test_title">PCSC Interface Test</string>
+    <string name="pcsc_test_desc">Test PC/SC standard APIs: listReaders, connect, transmit</string>
+
+    <!-- Private API Test -->
+    <string name="private_api_test_title">Private API Test</string>
+    <string name="private_api_test_desc">Test Feitian nativeGetDeviceInfo (firmware, serial, model)</string>
+
+    <!-- PKCS11 Hub -->
+    <string name="pkcs11_hub_title">OpenSC-PKCS11 Test</string>
+    <string name="pkcs11_hub_desc">Choose a test module</string>
+    <string name="pkcs11_hub_integration">Integration Test</string>
+    <string name="pkcs11_hub_piv_demo">PIV Demo</string>
+
+    <!-- PKCS#11 Test -->
+    <string name="pkcs11_test_title">PKCS#11 Integration Test</string>
+    <string name="pkcs11_test_desc">opensc-pkcs11 + libftreader-pcsc Integration Test</string>
+    <string name="pkcs11_test_prereq">Prerequisites: Start PCSCServer from main screen, connect BLE/USB reader and insert card</string>
+    <string name="pkcs11_test_btn_run">Run PKCS#11 Test</string>
+    <string name="pkcs11_test_toast_start_first">Start PCSCServer first</string>
+    <string name="pkcs11_test_toast_done">Done</string>
+
+    <!-- PKCS#11 Demo -->
+    <string name="pkcs11_demo_title">PKCS#11 Demo</string>
+    <string name="pkcs11_demo_desc">PKCS#11 Demo – OpenSC PIV card test</string>
+    <string name="pkcs11_demo_prereq">Prerequisites: Start PCSCServer from main screen, connect reader and insert PIV/OpenSC card</string>
+    <string name="pkcs11_demo_pin_label">PIN (for C_Login)</string>
+    <string name="pkcs11_demo_pin_hint">PIV/card PIN</string>
+    <string name="pkcs11_demo_section">PKCS#11 APIs</string>
+    <string name="pkcs11_demo_toast_start_first">Start PCSCServer first</string>
+    <string name="pkcs11_demo_error_open_session">Run C_OpenSession first</string>
+    <string name="pkcs11_demo_open_session_6983_hint">C_OpenSession failed. PIV card may return 6983 (Conditions not satisfied) if OpenSC probes during init. Try: 1) C_OpenSession 2) C_Login with PIN 3) C_FindObjects. Ensure card is present and PIN is correct.</string>
+    <string name="pkcs11_demo_error_login">Run C_OpenSession and C_Login first</string>
+    <string name="pkcs11_demo_error_no_session">No active session</string>
+</resources>

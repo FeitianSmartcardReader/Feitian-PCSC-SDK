@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/surface_variant">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/surface"
+        android:elevation="4dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pkcs11_demo_desc"
+                android:textSize="12sp"
+                android:textColor="@color/on_surface_variant"
+                android:layout_marginBottom="8dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pkcs11_demo_prereq"
+                android:textSize="11sp"
+                android:textColor="@color/on_surface_variant"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/surface"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp"
+                android:elevation="2dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                    android:orientation="vertical" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="host" android:textSize="11sp" android:textColor="@color/on_surface_variant" />
+                    <EditText android:id="@+id/param_host"
+                        android:layout_width="match_parent" android:layout_height="40dp"
+                        android:layout_marginTop="4dp" android:padding="8dp"
+                        android:inputType="text" android:maxLines="1" android:hint="127.0.0.1" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                    android:orientation="vertical" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="port" android:textSize="11sp" android:textColor="@color/on_surface_variant" />
+                    <EditText android:id="@+id/param_port"
+                        android:layout_width="match_parent" android:layout_height="40dp"
+                        android:layout_marginTop="4dp" android:padding="8dp"
+                        android:inputType="number" android:maxLines="1" android:hint="35963" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.6"
+                    android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="slotId" android:textSize="11sp" android:textColor="@color/on_surface_variant" />
+                    <EditText android:id="@+id/param_slot_id"
+                        android:layout_width="match_parent" android:layout_height="40dp"
+                        android:layout_marginTop="4dp" android:padding="8dp"
+                        android:inputType="text" android:maxLines="1" android:hint="0" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/surface"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp"
+                android:elevation="2dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/pkcs11_demo_pin_label" android:textSize="11sp" android:textColor="@color/on_surface_variant"
+                    android:layout_gravity="center_vertical" android:layout_marginEnd="8dp" />
+                <EditText android:id="@+id/param_pin"
+                    android:layout_width="match_parent" android:layout_height="40dp"
+                    android:padding="8dp" android:inputType="text" android:maxLines="1"
+                    android:text="123456" android:hint="@string/pkcs11_demo_pin_hint" />
+            </LinearLayout>
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="@string/pkcs11_demo_section" android:textSize="18sp" android:textStyle="bold"
+                android:textColor="@color/on_surface" android:layout_marginBottom="12dp" />
+
+            <!-- C_Initialize -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_Initialize" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <Button android:id="@+id/btn_init" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_init" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="36dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_Finalize -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_Finalize" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <Button android:id="@+id/btn_finalize" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_finalize" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="36dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_GetSlotList -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_GetSlotList" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <Button android:id="@+id/btn_get_slot_list" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_slot_list" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="36dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_GetSlotInfo -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_GetSlotInfo(slotId)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <Button android:id="@+id/btn_get_slot_info" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_slot_info" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="36dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_GetTokenInfo -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_GetTokenInfo(slotId)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <Button android:id="@+id/btn_get_token_info" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_token_info" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="36dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_OpenSession -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_OpenSession(slotId)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <Button android:id="@+id/btn_open_session" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_open_session" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="36dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_Login -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_Login(session, pin)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <Button android:id="@+id/btn_login" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_login" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="36dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_FindObjects -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_FindObjects(session)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <Button android:id="@+id/btn_find_objects" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_find_objects" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="60dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_Logout -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_Logout(session)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <Button android:id="@+id/btn_logout" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_logout" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="36dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_CloseSession -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_CloseSession(session)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <Button android:id="@+id/btn_close_session" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_close_session" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="36dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_GetMechanismList -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_GetMechanismList(slotId)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <Button android:id="@+id/btn_get_mechanism_list" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_get_mechanism_list" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="60dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_GetMechanismInfo -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_GetMechanismInfo(slotId, mechType)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <EditText android:id="@+id/param_mech_info_type" android:layout_width="match_parent" android:layout_height="36dp"
+                    android:layout_marginTop="4dp" android:padding="6dp" android:hint="0x250 (CKM_SHA256)" android:inputType="text" android:maxLines="1" />
+                <Button android:id="@+id/btn_get_mechanism_info" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_get_mechanism_info" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="36dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_GetSessionInfo -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_GetSessionInfo(session)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <Button android:id="@+id/btn_get_session_info" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_get_session_info" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="36dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_GetAttributeValue -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_GetAttributeValue(session, object, attrType)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
+                    <EditText android:id="@+id/param_obj_handle" android:layout_width="0dp" android:layout_weight="1" android:layout_height="36dp"
+                        android:padding="6dp" android:hint="objectHandle" android:inputType="text" android:maxLines="1" />
+                    <EditText android:id="@+id/param_attr_type" android:layout_width="0dp" android:layout_weight="1" android:layout_height="36dp"
+                        android:padding="6dp" android:hint="0x11 CKA_VALUE" android:inputType="text" android:maxLines="1" />
+                </LinearLayout>
+                <Button android:id="@+id/btn_get_attribute_value" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_get_attribute_value" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="60dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_SignInit + C_Sign -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_Sign(session, keyHandle, dataHex, mechType)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp">
+                    <EditText android:id="@+id/param_key_handle" android:layout_width="0dp" android:layout_weight="1" android:layout_height="36dp"
+                        android:padding="6dp" android:hint="keyHandle" android:inputType="text" android:maxLines="1" />
+                    <EditText android:id="@+id/param_mech_type" android:layout_width="0dp" android:layout_weight="1" android:layout_height="36dp"
+                        android:padding="6dp" android:hint="0x40" android:inputType="text" android:maxLines="1" />
+                </LinearLayout>
+                <EditText android:id="@+id/param_data_hex" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:padding="6dp" android:hint="data hex (e.g. SHA256 hash)" android:inputType="text" android:maxLines="2" />
+                <Button android:id="@+id/btn_sign" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_sign" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="60dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_Digest -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_Digest(session, dataHex, mechType)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <EditText android:id="@+id/param_digest_data" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:padding="6dp" android:hint="data hex" android:inputType="text" android:maxLines="2" />
+                <EditText android:id="@+id/param_digest_mech" android:layout_width="match_parent" android:layout_height="36dp"
+                    android:layout_marginTop="4dp" android:padding="6dp" android:hint="0x250 CKM_SHA256" android:inputType="text" android:maxLines="1" />
+                <Button android:id="@+id/btn_digest" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_digest" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="36dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_Verify -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_Verify(session, keyHandle, dataHex, sigHex)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <EditText android:id="@+id/param_verify_key" android:layout_width="match_parent" android:layout_height="36dp"
+                    android:layout_marginTop="4dp" android:padding="6dp" android:hint="keyHandle" android:inputType="text" android:maxLines="1" />
+                <EditText android:id="@+id/param_verify_data" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:padding="6dp" android:hint="data hex" android:inputType="text" android:maxLines="2" />
+                <EditText android:id="@+id/param_verify_sig" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:padding="6dp" android:hint="signature hex" android:inputType="text" android:maxLines="2" />
+                <EditText android:id="@+id/param_verify_mech" android:layout_width="match_parent" android:layout_height="36dp"
+                    android:layout_marginTop="4dp" android:padding="6dp" android:hint="0x40" android:inputType="text" android:maxLines="1" />
+                <Button android:id="@+id/btn_verify" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_verify" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="36dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_Decrypt -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_Decrypt(session, keyHandle, cipherHex)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <EditText android:id="@+id/param_decrypt_key" android:layout_width="match_parent" android:layout_height="36dp"
+                    android:layout_marginTop="4dp" android:padding="6dp" android:hint="keyHandle" android:inputType="text" android:maxLines="1" />
+                <EditText android:id="@+id/param_decrypt_cipher" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:padding="6dp" android:hint="cipher hex" android:inputType="text" android:maxLines="2" />
+                <EditText android:id="@+id/param_decrypt_mech" android:layout_width="match_parent" android:layout_height="36dp"
+                    android:layout_marginTop="4dp" android:padding="6dp" android:hint="0x01 CKM_RSA_PKCS" android:inputType="text" android:maxLines="1" />
+                <Button android:id="@+id/btn_decrypt" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_decrypt" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="60dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_Encrypt -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_Encrypt(session, keyHandle, plainHex)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <EditText android:id="@+id/param_encrypt_key" android:layout_width="match_parent" android:layout_height="36dp"
+                    android:layout_marginTop="4dp" android:padding="6dp" android:hint="keyHandle" android:inputType="text" android:maxLines="1" />
+                <EditText android:id="@+id/param_encrypt_plain" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:padding="6dp" android:hint="plain hex" android:inputType="text" android:maxLines="2" />
+                <EditText android:id="@+id/param_encrypt_mech" android:layout_width="match_parent" android:layout_height="36dp"
+                    android:layout_marginTop="4dp" android:padding="6dp" android:hint="0x01 CKM_RSA_PKCS" android:inputType="text" android:maxLines="1" />
+                <Button android:id="@+id/btn_encrypt" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_encrypt" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="60dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- C_GenerateRandom -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="12dp" android:elevation="2dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="C_GenerateRandom(session, len)" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/on_surface" />
+                <EditText android:id="@+id/param_random_len" android:layout_width="match_parent" android:layout_height="36dp"
+                    android:layout_marginTop="4dp" android:padding="6dp" android:hint="32" android:inputType="number" android:maxLines="1" />
+                <Button android:id="@+id/btn_generate_random" android:layout_width="match_parent" android:layout_height="40dp"
+                    android:layout_marginTop="8dp" android:text="Execute" />
+                <TextView android:id="@+id/result_generate_random" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:minHeight="36dp" android:background="@color/surface_variant"
+                    android:padding="8dp" android:fontFamily="monospace" android:textSize="11sp"
+                    android:visibility="gone" android:textColor="@color/on_surface" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

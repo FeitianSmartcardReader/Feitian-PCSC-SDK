@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/surface_variant">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/main_title"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/on_surface" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/main_subtitle_steps"
+                android:textSize="14sp"
+                android:textColor="@color/on_surface_variant" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_settings"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/main_btn_settings"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/primary" />
+    </LinearLayout>
+
+    <!-- Step 1: Start Server -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/main_step1_title"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:background="@color/surface"
+        android:padding="16dp"
+        android:elevation="2dp">
+        <TextView
+            android:id="@+id/tv_server_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/on_surface"
+            tools:text="Stopped" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_start"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="@string/main_btn_start"
+                android:backgroundTint="@color/success" />
+            <Button
+                android:id="@+id/btn_stop"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="@string/main_btn_stop" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Step 2: Scan -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/main_step2_title"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:background="@color/surface"
+        android:padding="16dp"
+        android:elevation="2dp">
+        <Button
+            android:id="@+id/btn_scan_ble"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/main_ble_step1_scan"
+            android:backgroundTint="@color/primary" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/main_ble_step2_select"
+            android:textSize="12sp"
+            android:textColor="@color/on_surface_variant" />
+        <Spinner
+            android:id="@+id/spinner_ble_devices"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:minHeight="48dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:padding="12dp" />
+        <TextView
+            android:id="@+id/tv_ble_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_gravity="end"
+            android:textSize="12sp"
+            android:textColor="@color/on_surface_variant"
+            tools:text="2 found" />
+    </LinearLayout>
+
+    <!-- Step 3: Connect -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/main_step3_title"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:background="@color/surface"
+        android:padding="16dp"
+        android:elevation="2dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_step3_hint"
+            android:textSize="12sp"
+            android:textColor="@color/on_surface_variant" />
+        <TextView
+            android:id="@+id/tv_reader_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            android:textColor="@color/on_surface_variant"
+            tools:text="— (connect to check)" />
+        <Button
+            android:id="@+id/btn_connect"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/main_step3_connect"
+            android:backgroundTint="@color/primary" />
+    </LinearLayout>
+
+    <!-- Step 4: Functional Testing -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/main_step4_title"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/main_step4_hint"
+        android:textSize="12sp"
+        android:textColor="@color/on_surface_variant" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:background="@color/surface"
+        android:padding="16dp"
+        android:elevation="2dp">
+        <Button
+            android:id="@+id/btn_pcsc_test"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/main_btn_pcsc_test" />
+        <Button
+            android:id="@+id/btn_private_api_test"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/main_btn_private_api_test" />
+        <Button
+            android:id="@+id/btn_pkcs11_test"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/main_btn_pkcs11_test" />
+    </LinearLayout>
+</LinearLayout>
+</ScrollView>
